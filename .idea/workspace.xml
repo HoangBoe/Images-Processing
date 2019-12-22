@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f74a8c6-fd24-45bb-8361-37349a422b68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/object_count_ha.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsCounting.py" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsCounting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/object_count_cc.py" beforeDir="false" afterPath="$PROJECT_DIR$/object_count_cc.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +58,9 @@
       <module name="monthu2_python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
