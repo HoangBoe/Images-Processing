@@ -1,10 +1,29 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+from skimage.morphology import opening
 
-gray_im = cv2.imread('objects1.jpg', 1)
-gray_im = cv2.cvtColor(gray_im, cv2.COLOR_BGR2GRAY)
-gray_correct = np.array(255 * (gray_im / 255) ** 1.2 , dtype='uint8')
-plt.subplot(222)
-plt.title('Gamma Correction y= 1.2')
-plt.imshow(gray_correct, cmap="gray", vmin=0, vmax=255)
+img = cv2.imread("beans.jpg")
+kernel = np.ones((5, 5), np.uint8)
+
+# Bước 1: Chuyển về ảnh xám
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Bước 2: Làm mờ ảnh
+blur = cv2.GaussianBlur(gray, (9, 9), 1)
+cv2.imshow('new', blur)
+
+# Bước 3: Lọc nhiễu
+new = cv2.adaptiveThreshold(blur, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, -5)
+
+# Bước 4: Opening
+opening = cv2.morphologyEx(new, cv2.MORPH_OPEN, kernel)
+
+# Bước 5: Đếm
+contours,_ = cv2.findContours(opening, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+# Kiểm tra kết quả
+cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
+cv2.imshow('opening', opening)
+print("Count: " + str(len(contours)))
+cv2.waitKey(0)
+cv2.destroyAllWindows()
